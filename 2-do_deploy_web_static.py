@@ -12,7 +12,7 @@ env.user = "ubuntu"
 def do_deploy(archive_path):
     """do deploy"""
 
-    if os.path.isfile(archive_path):
+    if not os.path.isfile(archive_path):
         return(False)
     try:
         name_file = archive_path.split("/")
@@ -25,9 +25,6 @@ def do_deploy(archive_path):
             name_file[1], rm_tgz[0]))
 
         run("rm /tmp/{}".format(name_file[1]))
-
-        run("mv /data/web_static/releases/{}/web_static/*\
-             /data/web_static/releases/{}".format(rm_tgz[0], rm_tgz[0]))
 
         run("rm -rf /data/web_static/releases/{}/web_static".format(rm_tgz[0]))
 
