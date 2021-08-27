@@ -26,6 +26,9 @@ def do_deploy(archive_path):
 
         run("rm /tmp/{}".format(name_file[1]))
 
+        run("mv /data/web_static/releases/{}/web_static/*\
+            /data/web_static/releases/{}".format(rm_tgz[0], rm_tgz[0]))
+
         run("rm -rf /data/web_static/releases/{}/web_static".format(rm_tgz[0]))
 
         run("rm -rf /data/web_static/current")
