@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """starts a Flask web application"""
-from flask import Flask
+from flask import Flask, escape
 
 app = Flask(__name__)
 
@@ -22,11 +22,13 @@ def c(text):
     """c is cool"""
     return 'C ' + text.replace('_', ' ')
 
+
 @app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python(text="is cool"):
     """python is text"""
-    return 'Python ' + text.replace('_', ' ')
+    python = text.replace('_', ' ')
+    return 'Python ' + escape(python)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
