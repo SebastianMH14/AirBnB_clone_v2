@@ -22,16 +22,11 @@ def c(text):
     """c is cool"""
     return 'C ' + text.replace('_', ' ')
 
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python(text=None):
+def python(text="is cool"):
     """python is text"""
     return 'Python ' + text.replace('_', ' ')
-
-@app.route('/python/', strict_slashes=False)
-def python2(text="is cool"):
-    """python is cool"""
-    return 'Python ' + text
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
