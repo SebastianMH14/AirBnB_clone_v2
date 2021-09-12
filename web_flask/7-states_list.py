@@ -15,7 +15,7 @@ def list_states():
 
 
 @app.teardown_appcontext
-def teardown_appcontext():
+def teardown_appcontext(exception):
     """close the conection with db"""
     storage.close()
 
